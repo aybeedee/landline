@@ -1,8 +1,7 @@
-export default function Home() {
+export default function Seller() {
     return (
-      <div>
-        <h1>SELLER PAGE</h1>
-      </div>
+        <div>
+            <h1>SELLER PAGE</h1>
+        </div>
     )
-  }
-  
+}
