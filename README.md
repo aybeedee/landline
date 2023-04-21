@@ -1,5 +1,9 @@
 # Landline - Real Estate Application
 
+Real Estate/Property Management/Listing Application - Raw Frontends built with Next.js 13, Typescript, Tailwind
+
+View it live at 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
