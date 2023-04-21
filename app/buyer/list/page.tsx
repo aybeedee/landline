@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function List() {
   return (
-    <div className="hero min-h-screen bg-base-200 flex flex-col space-y-4 items-center">
+    <div className="hero min-h-screen bg-base-200 flex flex-col items-center">
         <div className="navbar bg-base-100 mb-auto">
             <a className="btn btn-ghost normal-case text-xl">
             <h1 className="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent">LandLine<span style = {{color: "#661AE6"}}>.</span></h1>
