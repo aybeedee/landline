@@ -1,25 +1,26 @@
-type Property = {
+interface PropertyProps {
 
-    id: string,
-    type: string,
-    price: number,
-    location: string,
-    image: string,
-    contact: string
-};
+    handleRemove: (id: string) => any;
+    id: string;
+    type: string;
+    price: number;
+    location: string;
+    image: string;
+    contact: string;
+}
 
-export default function Property(props: Property) {
+export default function Property({handleRemove, id, type, price, location, image, contact}: PropertyProps) {
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src={props.image} alt="image" /></figure>
+            <figure><img src={image} alt="image" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{props.location}</h2>
-                <p>PKR {props.price}</p>
-                <p>{props.type}</p>
-                <p>Contact: {props.contact}</p>
+                <h2 className="card-title">{location}</h2>
+                <p>PKR {price}</p>
+                <p>{type}</p>
+                <p>Contact: {contact}</p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">Update</button>
-                    <button className="btn btn-primary">Remove</button>
+                    <button className="btn btn-primary" onClick = {() => handleRemove(image)}>Remove</button>
                 </div>
             </div>
         </div>

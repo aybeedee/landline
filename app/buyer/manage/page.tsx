@@ -38,8 +38,8 @@ const Manage = () => {
             id: "4",
             type: "Residential",
             price: 5600000,
-            location: "F-8/2 Islamabad",
-            image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+            location: "G-6/2 Islamabad",
+            image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_960_720.jpg",
             contact: "0334 5463453"
         },
     
@@ -47,8 +47,8 @@ const Manage = () => {
             id: "5",
             type: "Commercial",
             price: 7500000,
-            location: "Gulberg Islamabad",
-            image: "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_960_720.jpg",
+            location: "Rawal Road Islamabad",
+            image: "https://cdn.pixabay.com/photo/2017/04/10/22/28/residence-2219972_960_720.jpg",
             contact: "0334 5463453"
         },
     
@@ -56,24 +56,16 @@ const Manage = () => {
             id: "6",
             type: "Residential",
             price: 5600000,
-            location: "DHA Phase II Lahore",
-            image: "https://cdn.pixabay.com/photo/2017/07/09/03/19/home-2486092_960_720.jpg",
+            location: "Clifton Karachi",
+            image: "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_960_720.jpg",
             contact: "0334 5463453"
         }
     ])
 
-    /*const handleDischarge = async (pNo) => {
+    const handleRemove = (id: string) => {
 
-        try{
-
-            await axios.put("http://localhost:5500/dischargePatient/" + pNo)
-            window.location.reload()
-
-        } catch (err) {
-
-            console.log(err)
-        }
-    }*/
+        setProperties(properties.filter((ppty) => (ppty.image != id)))
+    }
 
     return (
         <div className="hero min-h-screen bg-base-200 flex flex-col space-y-4 items-center">
@@ -85,7 +77,7 @@ const Manage = () => {
 
             <div id="stats" className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {properties.map((ppty) => (
-                    <Property id = {ppty.id} type = {ppty.type} price = {ppty.price} location = {ppty.location} image = {ppty.image} contact = {ppty.contact}/>
+                    <Property key = {ppty.image} handleRemove = {handleRemove} id = {ppty.id} type = {ppty.type} price = {ppty.price} location = {ppty.location} image = {ppty.image} contact = {ppty.contact}/>
                 ))}
             </div>
 
