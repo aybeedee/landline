@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface PropertyProps {
 
     handleRemove: (id: string) => any;
@@ -19,7 +21,9 @@ export default function Property({handleRemove, id, type, price, location, image
                 <p>{type}</p>
                 <p>Contact: {contact}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Update</button>
+                    <button className="btn btn-primary">
+                    <Link href = '/buyer/list'>Update</Link>
+                    </button>
                     <button className="btn btn-primary" onClick = {() => handleRemove(image)}>Remove</button>
                 </div>
             </div>
