@@ -11,10 +11,10 @@ export default function User() {
         <div className = "card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 flex flex-col space-y-4 items-center p-11">
             <h1 className = "pb-3 text-2xl font-bold">Select Profile</h1>
             <button className = "btn btn-primary btn-wide">
-                <Link href = '/buyer'>Buyer</Link>
+                <Link href = '/seller'>Buyer</Link>
             </button>
             <button className = "btn btn-primary btn-wide">
-                <Link href = '/seller'>Seller</Link>
+                <Link href = '/buyer'>Seller</Link>
             </button>
         </div>
         <footer className="mt-auto footer items-center p-4 bg-base-100 text-neutral-content">

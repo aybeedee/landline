@@ -8,6 +8,45 @@ export default function List() {
             <h1 className="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent">LandLine<span style = {{color: "#661AE6"}}>.</span></h1>
             </a>
         </div>
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="card-body">
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Property Type</span>
+                    </label>
+                    <input type="text" placeholder="" className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Price</span>
+                    </label>
+                    <input type="number" placeholder="" className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Location</span>
+                    </label>
+                    <input type="number" placeholder="" className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Contact</span>
+                    </label>
+                    <input type="number" placeholder="" className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Images</span>
+                    </label>
+                    <input type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+                </div>
+                <div className="form-control mt-6">
+                <button className="btn btn-primary">
+                    <Link href = "/buyer">LIST PROPERTY</Link>
+                </button>
+                </div>
+            </div>
+        </div>
 
         <footer className="mt-auto footer items-center p-4 bg-base-100 text-neutral-content">
             <div className="items-center grid-flow-col">
