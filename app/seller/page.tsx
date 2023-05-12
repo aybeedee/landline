@@ -112,7 +112,7 @@ const Seller = () => {
 
             else {
 
-                if ((searchParams.minPrice === 0) && (searchParams.maxPrice === Number.MAX_VALUE)) {
+                if ((!searchParams.minPrice) && (!searchParams.maxPrice)) {
 
                     return (
 
@@ -122,7 +122,7 @@ const Seller = () => {
                     )
                 }
 
-                else if (searchParams.minPrice === 0) {
+                else if (!searchParams.minPrice) {
 
                     return (
 
@@ -132,7 +132,7 @@ const Seller = () => {
                     );
                 }
 
-                else if (searchParams.maxPrice === Number.MAX_VALUE) {
+                else if (!searchParams.maxPrice) {
 
                     return (
 
