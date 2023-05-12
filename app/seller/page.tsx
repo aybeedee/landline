@@ -3,64 +3,87 @@ import Link from "next/link";
 import {useState} from "react";
 import PropertyView from "../../components/propertyView";
 
+const properties = [
+
+    {
+        id: "1",
+        type: "Residential",
+        price: 5600000,
+        location: "F-8/2 Islamabad",
+        image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
+        contact: "0334 5463453"
+    },
+
+    {
+        id: "2",
+        type: "Commercial",
+        price: 7500000,
+        location: "Gulberg Islamabad",
+        image: "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_960_720.jpg",
+        contact: "0334 5463453"
+    },
+
+    {
+        id: "3",
+        type: "Residential",
+        price: 5600000,
+        location: "DHA Phase II Lahore",
+        image: "https://cdn.pixabay.com/photo/2017/07/09/03/19/home-2486092_960_720.jpg",
+        contact: "0334 5463453"
+    },
+
+    {
+        id: "4",
+        type: "Residential",
+        price: 5600000,
+        location: "G-6/2 Islamabad",
+        image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_960_720.jpg",
+        contact: "0334 5463453"
+    },
+
+    {
+        id: "5",
+        type: "Commercial",
+        price: 7500000,
+        location: "Rawal Road Islamabad",
+        image: "https://cdn.pixabay.com/photo/2017/04/10/22/28/residence-2219972_960_720.jpg",
+        contact: "0334 5463453"
+    },
+
+    {
+        id: "6",
+        type: "Residential",
+        price: 5600000,
+        location: "Clifton Karachi",
+        image: "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_960_720.jpg",
+        contact: "0334 5463453"
+    }
+];
+
 const Seller = () => {
 
-    const [properties, setProperties] = useState([
+    const [searchParams, setSearchParams] = useState({
 
-        {
-            id: "1",
-            type: "Residential",
-            price: 5600000,
-            location: "F-8/2 Islamabad",
-            image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_960_720.jpg",
-            contact: "0334 5463453"
-        },
+        location: "",
+        applicantID: "",
+        minPrice: 0,
+        maxPrice: Number.MAX_VALUE,
+        propertyType: "All"
+      })
+
+    const filteredProperties = properties.filter(
+        (property : any) => {
     
-        {
-            id: "2",
-            type: "Commercial",
-            price: 7500000,
-            location: "Gulberg Islamabad",
-            image: "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_960_720.jpg",
-            contact: "0334 5463453"
-        },
-    
-        {
-            id: "3",
-            type: "Residential",
-            price: 5600000,
-            location: "DHA Phase II Lahore",
-            image: "https://cdn.pixabay.com/photo/2017/07/09/03/19/home-2486092_960_720.jpg",
-            contact: "0334 5463453"
-        },
-    
-        {
-            id: "4",
-            type: "Residential",
-            price: 5600000,
-            location: "G-6/2 Islamabad",
-            image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_960_720.jpg",
-            contact: "0334 5463453"
-        },
-    
-        {
-            id: "5",
-            type: "Commercial",
-            price: 7500000,
-            location: "Rawal Road Islamabad",
-            image: "https://cdn.pixabay.com/photo/2017/04/10/22/28/residence-2219972_960_720.jpg",
-            contact: "0334 5463453"
-        },
-    
-        {
-            id: "6",
-            type: "Residential",
-            price: 5600000,
-            location: "Clifton Karachi",
-            image: "https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_960_720.jpg",
-            contact: "0334 5463453"
+            return property;
+          
+
         }
-    ])
+    );
+
+    const handleChange = (e: any) => {
+
+        setSearchParams(prev => ({...prev, [e.target.name]: e.target.value}));
+    };
 
     return (
         <div className="antialiased bg-base-200 w-full min-h-screen text-slate-300 relative py-4">
@@ -91,7 +114,6 @@ const Seller = () => {
                                     <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Make Purchase</p>
                                 <p className="text-slate-400 text-sm hidden md:block">Buy new property</p>
                                 </div>
-                                
                             </div>
                         </a>
                         <a href="#" className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
@@ -119,7 +141,6 @@ const Seller = () => {
                                     <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Finance</p>
                                 <p className="text-slate-400 text-sm hidden md:block">Manage Finances</p>
                                 </div>
-                                
                             </div>
                         </a>
                         <a href="#" className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
@@ -135,16 +156,31 @@ const Seller = () => {
                                     <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">Settings</p>
                                 <p className="text-slate-400 text-sm hidden md:block">Edit settings</p>
                                 </div>
-                                
                             </div>
                         </a>
                     </div>
                     <p className="text-sm text-center text-gray-600">v1 | &copy; 2023 Devsociates</p>
                 </div>
-                <div id="content" className="bg-base-100 col-span-9 rounded-lg p-6 flex flex-col space-y-4 items-center">
-                    <input type="text" placeholder="Search Property" className="input input-bordered w-full" />
+
+                <div id="content" className="bg-base-100 col-span-9 rounded-lg p-6 flex flex-col space-y-4 items-center justify-evenly">
+                    <div className = "flex w-full items-center justify-between space-x-1">
+                        <input type="text" placeholder="Search Location" className="p-2 input input-bordered" />
+
+                        <label>Min Price:  </label>
+                        <input id = "minPrice" type = "number" onChange = {handleChange} name = "minPrice" className="p-2 w-40 input input-bordered"/>
+
+
+                        <label>Max Price:  </label>
+                        <input id = "maxPrice" type = "number" onChange = {handleChange} name = "maxPrice" className="p-2 w-40 input input-bordered"/>
+
+                        <select onChange = {handleChange} name = "propertyType" className = "p-2 w-32 input input-bordered">
+                            <option selected value = "All">Select Type</option>
+                            <option value = "Accounts">Commercial</option>
+                            <option value = "Admin">Residential</option>
+                        </select>
+                    </div>
                     <div id="stats" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
-                        {properties.map((ppty) => (
+                        {filteredProperties.map((ppty) => (
                             <PropertyView key = {ppty.image} id = {ppty.id} type = {ppty.type} price = {ppty.price} location = {ppty.location} image = {ppty.image} contact = {ppty.contact}/>
                         ))}
                     </div>
