@@ -65,18 +65,94 @@ const Seller = () => {
     const [searchParams, setSearchParams] = useState({
 
         location: "",
-        applicantID: "",
-        minPrice: 0,
-        maxPrice: Number.MAX_VALUE,
+        minPrice: null,
+        maxPrice: null,
         propertyType: "All"
       })
 
     const filteredProperties = properties.filter(
-        (property : any) => {
-    
-            return property;
-          
 
+        (property : any) => {
+            
+            if (searchParams.propertyType === "All") {
+
+                if ((!searchParams.minPrice) && (!searchParams.maxPrice)) {
+
+                    return property.location.toLowerCase().includes(searchParams.location.toLowerCase());
+                }
+
+                else if (!searchParams.minPrice) {
+
+                    return (
+
+                        property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
+                        (property.price <= searchParams.maxPrice)
+                    );
+                }
+
+                else if (!searchParams.maxPrice) {
+
+                    return (
+
+                        property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
+                        (property.price >= searchParams.minPrice)
+                    );
+                }
+
+                else {
+
+                    return (
+
+                        property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
+                        (property.price >= searchParams.minPrice) &&
+                        (property.price <= searchParams.maxPrice)
+                    );
+                }
+            }
+
+            else {
+
+                if ((searchParams.minPrice === 0) && (searchParams.maxPrice === Number.MAX_VALUE)) {
+
+                    return (
+
+                        property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
+                        (property.type === searchParams.propertyType) &&
+                        (property.type === searchParams.propertyType)
+                    )
+                }
+
+                else if (searchParams.minPrice === 0) {
+
+                    return (
+
+                        property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
+                        (property.type === searchParams.propertyType) &&
+                        (property.price <= searchParams.maxPrice)
+                    );
+                }
+
+                else if (searchParams.maxPrice === Number.MAX_VALUE) {
+
+                    return (
+
+                        property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
+                        (property.type === searchParams.propertyType) &&
+                        (property.price >= searchParams.minPrice)
+                    );
+                }
+
+                else {
+
+                    return (
+
+                        property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
+                        (property.type === searchParams.propertyType) &&
+                        (property.price >= searchParams.minPrice) &&
+                        (property.price <= searchParams.maxPrice)
+                    );
+                }
+            }
         }
     );
 
@@ -164,19 +240,18 @@ const Seller = () => {
 
                 <div id="content" className="bg-base-100 col-span-9 rounded-lg p-6 flex flex-col space-y-4 items-center justify-evenly">
                     <div className = "flex w-full items-center justify-between space-x-1">
-                        <input type="text" placeholder="Search Location" className="p-2 input input-bordered" />
+                        <input name = "location" type="text" onChange = {handleChange} placeholder="Search Location" className="p-2 input input-bordered" />
 
                         <label>Min Price:  </label>
-                        <input id = "minPrice" type = "number" onChange = {handleChange} name = "minPrice" className="p-2 w-40 input input-bordered"/>
-
+                        <input type = "number" onChange = {handleChange} name = "minPrice" className="p-2 w-40 input input-bordered"/>
 
                         <label>Max Price:  </label>
-                        <input id = "maxPrice" type = "number" onChange = {handleChange} name = "maxPrice" className="p-2 w-40 input input-bordered"/>
+                        <input type = "number" onChange = {handleChange} name = "maxPrice" className="p-2 w-40 input input-bordered"/>
 
                         <select onChange = {handleChange} name = "propertyType" className = "p-2 w-32 input input-bordered">
                             <option selected value = "All">Select Type</option>
-                            <option value = "Accounts">Commercial</option>
-                            <option value = "Admin">Residential</option>
+                            <option value = "Commercial">Commercial</option>
+                            <option value = "Residential">Residential</option>
                         </select>
                     </div>
                     <div id="stats" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
