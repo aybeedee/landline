@@ -86,7 +86,7 @@ const Seller = () => {
                     return (
 
                         property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
-                        (property.price <= searchParams.maxPrice)
+                        (property.price <= (searchParams.maxPrice === null ? Number.MAX_VALUE : searchParams.maxPrice))
                     );
                 }
 
@@ -128,7 +128,7 @@ const Seller = () => {
 
                         property.location.toLowerCase().includes(searchParams.location.toLowerCase()) &&
                         (property.type === searchParams.propertyType) &&
-                        (property.price <= searchParams.maxPrice)
+                        (property.price <= (searchParams.maxPrice === null ? Number.MAX_VALUE : searchParams.maxPrice))
                     );
                 }
 

@@ -26,7 +26,7 @@ export default function List() {
                     <label className="label">
                         <span className="label-text">Location</span>
                     </label>
-                    <input type="number" placeholder="" className="input input-bordered" />
+                    <input type="text" placeholder="" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
